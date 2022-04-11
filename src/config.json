@@ -1,0 +1,4 @@
+{
+	"apiUrl": "https://api.worldbank.org/v2/countries?format=json",
+	"numberOfCountries": 10
+}

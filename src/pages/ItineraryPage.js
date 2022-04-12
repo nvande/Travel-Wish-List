@@ -4,9 +4,6 @@ import ItineraryComponent from '../components/ItineraryComponent.js';
 function ItineraryPage() {
 	return (
 		<PageComponent>
-			<p>
-				Click to generate an itinerary!
-			</p>
 			<ItineraryComponent/>
 		</PageComponent>
 	);

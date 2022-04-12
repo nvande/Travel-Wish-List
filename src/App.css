@@ -47,3 +47,41 @@ html, .App {
 .iconInline {
   margin-bottom: 4px;
 }
+
+.removeIcon, .reorderIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+}
+
+.removeIcon {
+  right: 20px;
+}
+
+.reorderIcon {
+  color: gray;
+  right: 58px;
+}
+
+.removeIcon:hover {
+  cursor: pointer;
+}
+
+.countryWrapper:hover {
+  background-color: rgba(255,0,0,.2);
+}
+
+.countryBody:hover {
+  background-color: white;
+}
+
+.countryBody:hover .reorderIcon {
+  color: lightgray;
+}
+
+.countryName:hover {
+  color: blue;
+  text-decoration: underline;
+  cursor: help;
+}

@@ -5,13 +5,13 @@ import { useEffect, useState, useRef } from 'react';
 function CountryComponent({index, country, removeCountry, openDetails, shouldShowHelp, setShouldShowHelp}) {
   const renderDetailTooltip = (props) => (
     <Tooltip id={"country-tooltip"} {...props}>
-      {props.verbose ? 'Click here to view country details and edit notes' : 'View Details'}
+      {props.verbose ? 'Click here to view country details and edit notes' : 'View Details & Notes'}
     </Tooltip>
   );
 
   const renderReorderTooltip = (props) => (
     <Tooltip id={"country-tooltip"} {...props}>
-      {props.verbose ? 'Click anywhere on an item to reorder countries in the list' : 'Reorder'}
+      {props.verbose ? 'Click & drag anywhere on an item to reorder countries in the list' : 'Drag to Reorder'}
     </Tooltip>
   );
 

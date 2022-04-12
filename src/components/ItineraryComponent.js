@@ -1,5 +1,6 @@
 import { Button, Modal } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
+import { FaQuestion } from 'react-icons/fa';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import config from "../config.json";
 

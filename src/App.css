@@ -30,9 +30,9 @@ html, .App {
   position: relative;
   background-color: #fff;
   padding: 10px 20px;
-  padding-bottom: 140px;
+  padding-bottom: 80px;
   min-height: 500px;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
   border-radius: 0 0 5px 5px;
   box-shadow: 0px 0px 10px rgb(0 0 0 / 5%);
 }
@@ -48,11 +48,15 @@ html, .App {
   margin-bottom: 4px;
 }
 
-.removeIcon, .reorderIcon {
+.removeIcon, .reorderIcon, .countryNumber {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   font-size: 24px;
+}
+
+.countryHeader {
+  display: inline-block;
 }
 
 .removeIcon {
@@ -80,8 +84,68 @@ html, .App {
   color: lightgray;
 }
 
-.countryName:hover {
+.countryNumber {
+  display: inline-block;
+  text-align: center;
+  padding: 2px;
+  width: 32px;
+  height: 32px;
+  line-height: 28px;
+  border-radius: 50%;
+  left: 10px;
+}
+
+.countryName {
+  padding-left: 52px;
+}
+
+.countryHeader:hover .countryName {
   color: blue;
   text-decoration: underline;
   cursor: help;
+}
+
+.modal-header .btn-close {
+  background-color: white;
+  margin-right: 5px;
+}
+
+.color-0 {
+  background-color: #1b4793!important;
+}
+
+.color-1 {
+  background-color: #ef3c23!important;
+}
+
+.color-2 {
+  background-color: #339933!important;
+}
+
+.color-3 {
+  background-color: #ff9900!important;
+}
+
+.color-4 {
+  background-color: #ff4488!important;
+}
+
+.color-5 {
+  background-color: #9933ff!important;
+}
+
+.color-6 {
+  background-color: #007EA7!important;
+}
+
+.color-7 {
+  background-color: #7a2417!important;
+}
+
+.color-8 {
+  background-color: #2b504a!important;
+}
+
+.color-9 {
+  background-color: #b78747!important;
 }

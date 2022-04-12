@@ -184,6 +184,8 @@ function ItineraryComponent() {
 		  {selectedCountries && selectedCountries[modalIndex] &&
 		  	<DetailsModal
 		  		modalOpen={modalOpen}
+		  		index={modalIndex}
+		  		total={selectedCountries.length}
 		  		country={selectedCountries[modalIndex]}
 		  		onClose={closeModal}
 		  		onNext={() => onNext(modalIndex)}

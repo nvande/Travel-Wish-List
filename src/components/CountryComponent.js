@@ -8,16 +8,20 @@ function CountryComponent({index, country, removeCountry, openDetails}) {
     </Tooltip>
   );
 
+
   return (
-    <Card className={"mb-2 p-2"}>
+    <Card className={"mb-2 p-1"}>
       <div className="countryWrapper">
-        <div className="countryBody p-2">
+        <div className="countryBody">
+          <span className={"countryNumber text-white bg-secondary ms-0 color-"+index}>{index+1}</span> 
           <OverlayTrigger
             placement="right"
             delay={{ show: 250, hide: 100 }}
             overlay={renderTooltip}
           >
-            <span onClick={openDetails} className="h5 countryName">{index+1}. {country.name}</span>
+            <div onClick={openDetails} className="countryHeader p-2">
+              <span className={"countryName h4 ps-5"}>{country.name}</span>
+            </div>
           </OverlayTrigger>
           <FaBars className="reorderIcon" />
         </div>

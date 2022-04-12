@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import config from "../config.json";
 
 import CountryComponent from './CountryComponent';
+import LoadingComponent from './LoadingComponent';
 import DetailsModal from './DetailsModal';
 
 function ItineraryComponent() {
@@ -14,6 +15,9 @@ function ItineraryComponent() {
 
 	const [modalOpen, setModalOpen] = useState(false);
 	const [modalIndex, setModalIndex] = useState(0);
+	const [shouldShowHelp, setShouldShowHelp] = useState(true);
+
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		if(regenerate && countries.length > 0) {
@@ -54,6 +58,7 @@ function ItineraryComponent() {
 	}
 
 	const getCountries = async() => {
+		setLoading(true);
 		let buffer = [];
 		let pages = 0;
 		let data = await fetchPage(1);
@@ -65,6 +70,7 @@ function ItineraryComponent() {
 			buffer = buffer.concat(data[1]);
 		}
 		setCountries(buffer);
+		setLoading(false);
 	};
 
 	const onClickButton = async() => {
@@ -145,6 +151,12 @@ function ItineraryComponent() {
 	    setSelectedNotes(notes);
 	  }
 
+	if(loading) {
+		return (
+			<LoadingComponent/>
+		);
+	}
+
 	return (
 		<div>
 			{selectedCountries.length > 0 ?
@@ -163,7 +175,14 @@ function ItineraryComponent() {
 		                      {...provided.draggableProps}
 		                      {...provided.dragHandleProps}
 		                    >
-		                      <CountryComponent index={index} country={country} openDetails={() => openModal(index)} removeCountry={() => removeCountry(country)}/>
+		                      <CountryComponent
+		                      	index={index}
+		                      	country={country}
+		                      	openDetails={() => openModal(index)}
+		                      	removeCountry={() => removeCountry(country)}
+		                      	shouldShowHelp={shouldShowHelp}
+		                      	setShouldShowHelp={() => setShouldShowHelp()}
+		                      />
 		                    </div>
 		                  )}
 		                </Draggable>
@@ -174,12 +193,25 @@ function ItineraryComponent() {
 		        </Droppable>
 		      </DragDropContext>
 		      :
-		      <p className={"text-center mt-5 mb-4 lead"}>
-		        Click 'Generate List' to generate a randomized itinerary to get started.
-		      </p>
+		      <div>
+		      	<img className={"img-responsive"} src="traveler.jpg"/>
+		      	<p className={"text-center mt-3 lead"}>
+		        	Ready to travel the world?
+		     	</p>
+				<p className={"text-center mt-3 mb-4"}>
+		        	Click 'Generate List' to generate a randomized itinerary to get started.
+		     	</p>
+		      </div>
 	  		}
   		  <div className="text-center mt-3">
-			<Button variant="success" size="lg" onClick={onClickButton}>{selectedCountries.length == 0 ? 'Generate List' : 'Regenerate List'}</Button>
+			<Button variant="success" size="lg" onClick={onClickButton}>
+				{selectedCountries.length == 0 ? 'Generate List' : ' Regenerate List'}
+			</Button>
+			{ selectedCountries.length != 0 &&
+				<Button variant="outline-success" size="lg" className={"ms-3"} onClick={() => setShouldShowHelp(true)}>
+					Show Help
+				</Button>
+			}
 		  </div>
 		  {selectedCountries && selectedCountries[modalIndex] &&
 		  	<DetailsModal
@@ -198,41 +230,6 @@ function ItineraryComponent() {
 		  }
 		</div>
     );
-
-	/*return (
-		<div>
-			<DragDropContext>
-				<Droppable droppableId="droppable">
-				{(provided, snapshot) => (
-			          <div
-			            {...provided.droppableProps}
-			            ref={provided.innerRef}
-			            style={getListStyle(snapshot.isDraggingOver)}
-			          >
-							{ selectedCountries && selectedCountries.map((country, index) => {
-								return (
-									<Draggable key={country.id}>
-										{(provided, snapshot) => (
-											<div>
-												<CountryComponent country = {country} removeCountry={() => removeCountry(country)}/>
-											</div>
-										)}
-									</Draggable>
-								);
-							};
-						}
-					})
-				)}
-				</Droppable>
-			</DragDropContext>
-			<div className="text-center mt-3">
-				<Button variant="success" size="lg" onClick={onClickButton}>Generate List</Button>
-			</div>
-		</div>
-	)
-	*/
-
-
 }
 
 export default ItineraryComponent;

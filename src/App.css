@@ -18,12 +18,24 @@ html, .App {
   color: #eee!important;
 }
 
+.siteLogo {
+  animation: pulse 5s infinite;
+}
+
 .loadingComponent .loadingIcon {
-  color: red;
+  color: #339933;
   height: 200px;
   font-size: 36px;
   transform: scale(1);
   animation: pulse .5s infinite;
+}
+
+.img-responsive {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
 }
 
 .twlBody {
@@ -45,7 +57,7 @@ html, .App {
 }
 
 .iconInline {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .removeIcon, .reorderIcon, .countryNumber {
@@ -59,17 +71,32 @@ html, .App {
   display: inline-block;
 }
 
+.removeWrapper, .reorderWrapper {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  width: 50px;
+  transform: translateY(-50%);
+  font-size: 24px;
+}
+
+.reorderWrapper {
+  width: 90px;
+}
+
 .removeIcon {
   right: 20px;
+  opacity: .6;
 }
 
 .reorderIcon {
-  color: gray;
+  color: lightgray;
   right: 58px;
 }
 
 .removeIcon:hover {
   cursor: pointer;
+  opacity: 1;
 }
 
 .countryWrapper:hover {
@@ -81,7 +108,7 @@ html, .App {
 }
 
 .countryBody:hover .reorderIcon {
-  color: lightgray;
+  color: gray;
 }
 
 .countryNumber {
@@ -90,6 +117,7 @@ html, .App {
   padding: 2px;
   width: 32px;
   height: 32px;
+  font-size: 20px;
   line-height: 28px;
   border-radius: 50%;
   left: 10px;
@@ -102,12 +130,16 @@ html, .App {
 .countryHeader:hover .countryName {
   color: blue;
   text-decoration: underline;
-  cursor: help;
+  cursor: pointer;
 }
 
 .modal-header .btn-close {
   background-color: white;
   margin-right: 5px;
+}
+
+.nextButton .iconInline, .backButton .iconInline {
+  margin-top: 4px;
 }
 
 .color-0 {
@@ -119,15 +151,15 @@ html, .App {
 }
 
 .color-2 {
-  background-color: #339933!important;
+  background-color: #ee9900!important;
 }
 
 .color-3 {
-  background-color: #ff9900!important;
+  background-color: #339933!important;
 }
 
 .color-4 {
-  background-color: #ff4488!important;
+  background-color: #ee4488!important;
 }
 
 .color-5 {
@@ -143,9 +175,29 @@ html, .App {
 }
 
 .color-8 {
-  background-color: #2b504a!important;
+  background-color: #a28443!important;
 }
 
 .color-9 {
-  background-color: #b78747!important;
+  background-color: #2b504a!important;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95) rotate(-10deg);
+  }
+
+  70% {
+    transform: scale(1) rotate(10deg);
+  }
+
+  100% {
+    transform: scale(0.95) rotate(-10deg);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .countryName {
+    font-size: 1em;
+  }
 }

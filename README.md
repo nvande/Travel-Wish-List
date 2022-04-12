@@ -10,7 +10,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ## Configuration
 
 You can edit `config.json` to modify configuration for the app:
-* `apiUrl` determines the URL of the API to gather country information from
+* `apiUrl` determines the URL of the API to gather country information from (works with the World Bank API: https://api.worldbank.org/v2/countries?format=json)
 * `numberOfCountries` lets you control how many countries to generate with each new list (up to 99 before overflow becomes a problem) 
 
 *note: this project uses a free vector image created by the artist agentcrown7165717, https://www.vecteezy.com/members/agentcrown7165717
